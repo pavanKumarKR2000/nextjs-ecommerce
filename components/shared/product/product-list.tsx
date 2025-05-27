@@ -1,6 +1,7 @@
 import sampleData from "@/db/sample-data";
+import ProductCard from "./product-card";
 
-type Product = (typeof sampleData.products)[0];
+export type Product = (typeof sampleData.products)[0];
 
 interface ProductListProps {
   data: Product[];
@@ -15,7 +16,7 @@ export default function ProductList({ data, title, limit }: ProductListProps) {
       {data.length ? (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {data.slice(0, limit).map((product: Product) => (
-            <div key={product.name}>{product.name}</div>
+            <ProductCard product={product} key={product.name} />
           ))}
         </div>
       ) : (

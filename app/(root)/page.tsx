@@ -1,4 +1,5 @@
-import { Button } from "@/components/ui/button";
+import ProductList from "@/components/shared/product/product-list";
+import sampleData from "@/db/sample-data";
 
 export const metadata = {
   title: "Home",
@@ -7,8 +8,7 @@ export const metadata = {
 export default function Home() {
   return (
     <div>
-      <Button className="text-lg">Button</Button>
-      <p>hello world</p>
+      <ProductList data={sampleData.products} title="Newest arrivals" />
     </div>
   );
 }
