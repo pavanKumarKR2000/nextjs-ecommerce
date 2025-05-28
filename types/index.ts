@@ -1,7 +1,9 @@
 import { z } from "zod";
 import { insertProductSchema } from "@/lib/validators";
-export type Product = z.infer<typeof insertProductSchema> & {
-  id: number;
-  rating: string;
+type InsertProductScheme = Omit<z.infer<typeof insertProductSchema>, "price">;
+export type Product = InsertProductScheme & {
+  id: string;
+  rating: any;
   createdAt: Date;
+  price: any;
 };

@@ -3,6 +3,11 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { APP_NAME, APP_DESCRIPTION, SERVER_URL } from "@/lib/constants";
 import { ThemeProvider } from "next-themes";
+import { Outfit } from "next/font/google";
+
+const font = Outfit({
+  subsets: ["latin"],
+});
 
 const myFont = localFont({
   src: "../public/circular.ttf",
@@ -24,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={myFont.className}>
+      <body className={font.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

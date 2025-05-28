@@ -1,7 +1,5 @@
-import sampleData from "@/db/sample-data";
+import { Product } from "@/types";
 import ProductCard from "./product-card";
-
-export type Product = (typeof sampleData.products)[0];
 
 interface ProductListProps {
   data: Product[];
@@ -11,7 +9,7 @@ interface ProductListProps {
 
 export default function ProductList({ data, title, limit }: ProductListProps) {
   return (
-    <div className="my-10">
+    <div className="my-10 space-y-4">
       <h2 className="h2-bold">{title}</h2>
       {data.length ? (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
