@@ -1,5 +1,7 @@
-import { signIn } from "@/auth";
+"use server";
+import { signIn, signOut } from "@/auth";
 import { signInFormSchema } from "../validators";
+import { isRedirectError } from "next/dist/client/components/redirect-error";
 
 export async function signInWithCredentials(
   prevState: unknown,
@@ -12,5 +14,15 @@ export async function signInWithCredentials(
     });
     await signIn("credentials", user);
     return { success: true, message: "Signed in successfully" };
-  } catch (error) {}
+  } catch (error) {
+    if (isRedirectError(error)) {
+      throw error;
+    }
+
+    return { success: false, message: "Invalid email or password" };
+  }
+}
+
+export async function signOutUser() {
+  await signOut();
 }
