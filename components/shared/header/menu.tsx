@@ -10,6 +10,7 @@ import { EllipsisVertical, ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
 import ModeToggle from "./mode-toggle";
 import { signOutUser } from "@/lib/actions/user.actions";
+import UserButton from "./user-button";
 
 export default function Menu() {
   return (
@@ -21,11 +22,7 @@ export default function Menu() {
             <ShoppingCart /> Cart
           </Link>
         </Button>
-        <Button asChild variant="default">
-          <Link href="/sign-in">
-            <User /> Sign in
-          </Link>
-        </Button>
+        <UserButton />
       </nav>
       <nav className="md:hidden">
         <Sheet>
@@ -41,11 +38,7 @@ export default function Menu() {
                   <ShoppingCart /> Cart
                 </Link>
               </Button>
-              <Button asChild variant="default">
-                <Link href="/sign-in">
-                  <User /> Sign in
-                </Link>
-              </Button>
+              <UserButton />
             </SheetHeader>
           </SheetContent>
         </Sheet>
