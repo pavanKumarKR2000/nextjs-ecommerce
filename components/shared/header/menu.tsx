@@ -9,6 +9,7 @@ import {
 import { EllipsisVertical, ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
 import ModeToggle from "./mode-toggle";
+import { signOutUser } from "@/lib/actions/user.actions";
 
 export default function Menu() {
   return (
