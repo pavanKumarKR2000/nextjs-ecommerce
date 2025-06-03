@@ -6,10 +6,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { EllipsisVertical, ShoppingCart, User } from "lucide-react";
+import { EllipsisVertical, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import ModeToggle from "./mode-toggle";
-import { signOutUser } from "@/lib/actions/user.actions";
 import UserButton from "./user-button";
 
 export default function Menu() {
