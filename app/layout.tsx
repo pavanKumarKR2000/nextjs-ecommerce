@@ -1,13 +1,14 @@
+import { Toaster } from "@/components/ui/sonner";
+import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from "@/lib/constants";
 import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
+import { ABeeZee } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import { APP_NAME, APP_DESCRIPTION, SERVER_URL } from "@/lib/constants";
-import { ThemeProvider } from "next-themes";
-import { Outfit } from "next/font/google";
-import { Toaster } from "@/components/ui/sonner";
 
-const font = Outfit({
+const font = ABeeZee({
   subsets: ["latin"],
+  weight: ["400"],
 });
 
 const myFont = localFont({
