@@ -4,7 +4,9 @@ import ProductPrice from "@/components/shared/product/product-price";
 import Rating from "@/components/shared/product/rating";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { getMyCart } from "@/lib/actions/cart.actions";
 import { getProductBySlug } from "@/lib/actions/product.actions";
+import { Cart } from "@/types";
 import { notFound } from "next/navigation";
 
 export default async function ProductPage({
@@ -18,6 +20,8 @@ export default async function ProductPage({
   if (!product) {
     return notFound();
   }
+
+  const cart = (await getMyCart()) as Cart;
 
   return (
     <section>
@@ -68,7 +72,7 @@ export default async function ProductPage({
               {product.stock > 0 && (
                 <div className="flex-center mt-6">
                   <AddToCart
-                    // cart={cart}
+                    cart={cart}
                     item={{
                       productId: product.id,
                       name: product.name,
