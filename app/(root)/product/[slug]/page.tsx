@@ -1,3 +1,4 @@
+import AddToCart from "@/components/shared/product/add-to-cart";
 import ProductImages from "@/components/shared/product/product-images";
 import ProductPrice from "@/components/shared/product/product-price";
 import Rating from "@/components/shared/product/rating";
@@ -64,21 +65,21 @@ export default async function ProductPage({
                   <Badge variant="destructive">Out Of Stock</Badge>
                 )}
               </div>
-              {/* {product.stock > 0 && (
-                <div className="flex-center">
+              {product.stock > 0 && (
+                <div className="flex-center mt-6">
                   <AddToCart
-                    cart={cart}
+                    // cart={cart}
                     item={{
                       productId: product.id,
                       name: product.name,
                       slug: product.slug,
-                      price: product.price,
+                      price: String(product.price),
                       qty: 1,
                       image: product.images![0],
                     }}
                   />
                 </div>
-              )} */}
+              )}
             </CardContent>
           </Card>
         </div>
