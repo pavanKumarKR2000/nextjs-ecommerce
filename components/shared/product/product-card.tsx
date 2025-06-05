@@ -6,7 +6,7 @@ import ProductPrice from "./product-price";
 import { Product } from "@/types";
 
 interface ProductCardProps {
-  product: Product;
+  product: any;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
