@@ -1,6 +1,5 @@
 "use client";
 
-import { useToast } from "@/hooks/use-toast";
 import { productDefaultValues } from "@/lib/constants";
 import { insertProductSchema, updateProductSchema } from "@/lib/validators";
 import { Product } from "@/types";
@@ -25,6 +24,7 @@ import { UploadButton } from "@/lib/uploadthing";
 import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
 import { Checkbox } from "../ui/checkbox";
+import { toast } from "sonner";
 
 const ProductForm = ({
   type,
@@ -32,13 +32,12 @@ const ProductForm = ({
   productId,
 }: {
   type: "Create" | "Update";
-  product?: Product;
+  product?: any;
   productId?: string;
 }) => {
   const router = useRouter();
-  const { toast } = useToast();
 
-  const form = useForm<z.infer<typeof insertProductSchema>>({
+  const form = useForm<z.infer<any>>({
     resolver:
       type === "Update"
         ? zodResolver(updateProductSchema)
@@ -55,14 +54,9 @@ const ProductForm = ({
       const res = await createProduct(values);
 
       if (!res.success) {
-        toast({
-          variant: "destructive",
-          description: res.message,
-        });
+        toast.error(res.message);
       } else {
-        toast({
-          description: res.message,
-        });
+        toast.success(res.message);
         router.push("/admin/products");
       }
     }
@@ -77,14 +71,9 @@ const ProductForm = ({
       const res = await updateProduct({ ...values, id: productId });
 
       if (!res.success) {
-        toast({
-          variant: "destructive",
-          description: res.message,
-        });
+        toast.error(res.message);
       } else {
-        toast({
-          description: res.message,
-        });
+        toast.success(res.message);
         router.push("/admin/products");
       }
     }
@@ -275,10 +264,7 @@ const ProductForm = ({
                             form.setValue("images", [...images, res[0].url]);
                           }}
                           onUploadError={(error: Error) => {
-                            toast({
-                              variant: "destructive",
-                              description: `ERROR! ${error.message}`,
-                            });
+                            toast.error(`ERROR! ${error.message}`);
                           }}
                         />
                       </FormControl>
@@ -327,10 +313,7 @@ const ProductForm = ({
                     form.setValue("banner", res[0].url);
                   }}
                   onUploadError={(error: Error) => {
-                    toast({
-                      variant: "destructive",
-                      description: `ERROR! ${error.message}`,
-                    });
+                    toast.error(`ERROR! ${error.message}`);
                   }}
                 />
               )}
