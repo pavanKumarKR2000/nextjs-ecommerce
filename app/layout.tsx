@@ -2,18 +2,17 @@ import { Toaster } from "@/components/ui/sonner";
 import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import { ABeeZee } from "next/font/google";
-import localFont from "next/font/local";
+import { Solway } from "next/font/google";
 import "./globals.css";
 
-const font = ABeeZee({
+const font = Solway({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "700", "300", "500", "800"],
 });
 
-const myFont = localFont({
-  src: "../public/circular.ttf",
-});
+// const myFont = localFont({
+//   src: "../public/circular.ttf",
+// });
 
 export const metadata: Metadata = {
   title: {
