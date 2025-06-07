@@ -220,7 +220,7 @@ const SearchPage = async (props: {
             ) : null}
           </div>
           <div>
-            Sort by{" "}
+            Sort by
             {sortOrders.map((s) => (
               <Link
                 key={s}

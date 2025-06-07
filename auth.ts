@@ -58,7 +58,6 @@ export const config = {
     //   ...authConfig.callbacks,
     async session({ session, user, trigger, token }: any) {
       // Set the user ID from the token
-
       session.user.id = token.sub;
       session.user.role = token.role;
       session.user.name = token.name;
